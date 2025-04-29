@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Real-is-sim, a robotics framework.">
+  <meta name="keywords" content="Policy learning, Robotics, Digital Twin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Real-is-Sim: Bridging the Sim-to-Real Gap with a Dynamic Digital Twin for Real-World Robot Policy Evaluation
+  </title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q46FF08RZ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q46FF08RZ6');
+</script>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon-96x96.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section>
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              Real-is-Sim: Bridging the Sim-to-Real Gap with a Dynamic Digital Twin
+            </h1>
+
+
+            <!-- 
+                <span class="link-block">
+                <a href="https://huggingface.co/datasets/anon211/embodied_gaussians/tree/main" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+  
+                <span class="link-block">
+                    <a href="#BibTex" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fa fa-quote-right"></i>
+                    </span>
+                    <span>BibTex</span>
+                    </a>
+                </span>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/hero_4x.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">
+          
+          
+          The real-is-sim framework operating with an always-in-the-loop simulator. The learnt PushT policy acts on the simulator and the simulator synchronizes itself with the real world. The real robot mimics the simulated robot.</span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Abstract</h1>
+      <div class="columns is-centered">
+        <div class="column">
+          We introduce real-is-sim, a new approach to integrating simulation into behavior cloning pipelines. In contrast to real-only methods, which lack the ability to safely test policies before deployment, and sim-to-real methods, which require complex adaptation to cross the sim-to-real gap, our framework allows policies to seamlessly switch between running on real hardware and running in parallelized virtual environments.
+At the center of real-is-sim is a dynamic digital twin, powered by the Embodied Gaussian simulator, that synchronizes with the real world at 60Hz. This twin acts as a mediator between the behavior cloning policy and the real system. Policies are trained using representations derived from simulator states that are corrected using real-world feedback. Crucially, these policies always act on the simulated robot, never the real one. During deployment, the real robot simply follows the simulated robot’s joint states, staying fully decoupled from the executed policy. This setup, where the simulator drives all policy execution and maintains real-time synchronization with the physical world, shifts the responsibility of crossing the sim-to-real gap to the digital twin's synchronization mechanisms. We demonstrate real-is-sim on a long-horizon manipulation task (PushT), showing that virtual evaluations strongly correlate with real-world results. We further show how real-world data can be augmented with virtual rollouts and evaluate policies trained on different forms of representation, including object poses and rendered images from both static and robot-mounted cameras. Our results highlight the flexibility of the real-is-sim framework across training, evaluation, and deployment stages
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Framework</h1>
+      <div style="display: flex; justify-content: center;">
+          <img src="./static/images/realissim-method.png" alt="Framework illustration" 
+               style="max-height: 800px; height: auto; width: auto;">
+        </object>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">The real-is-sim framework seamlessly transitions between online and offline modes because it uses an always-in-the-loop simulator as a mediator.</span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Learnt Policies</h1>
+      <div style="display: flex; justify-content: center;">
+      <video id="realtime" autoplay muted loop playsinline style="max-height: 800px; height: auto; width: auto;">
+        <source src="./static/videos/all_repr_grid.mp4" type="video/mp4">
+      </video>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> Policies learnt from different representations extracted from the simulator state. </span>
+      </h2>
+    </div>
+  </section>
+
+
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Online Mode</h1>
+      <video id="realtime" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/hero.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> Our system operating in online mode with Embodied Gaussians acting as a mediator between the policy and the real world.</span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Offline Mode</h1>
+      <video id="realtime" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/offline_evaluation_2.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> Our system operating in offline mode evaluating an imitation learning policy. Offline mode can render virtual cameras for multiple scenes at the same time and evaluate vision based policies as well as state based policies.</span>
+      </h2>
+    </div>
+  </section>
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Gripper Virtual Camera </h1>
+      <video id="realtime" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/gripper_virtual_camera.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> 
+          An imitation learning policy trained on a virtually rendered image from a virtual camera mounted on the end effector.
+        </span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Static Virtual Camera </h1>
+      <video id="realtime" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/static_virtual_camera.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> 
+          An imitation learning policy trained on a virtually rendered image from a static virtual camera.
+        </span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Interesting Exploration Behaviour</h1>
+      <video id="realtime" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/exploration.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> 
+          The imitation learning policy explores the space to find the T-Block when the T-Block is not in view of its virtual gripper camera.
+        </span>
+      </h2>
+    </div>
+  </section>
+
+  <section class="mb-6">
+    <div class="container is-max-desktop">
+      <h1 class="title">Desynchronization</h1>
+      <video id="realtime" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/desynchronization.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> 
+          The imitation learning policy creates actions that actively prevent the visual correction mechanism from resynchronizing the simulator.
+        </span>
+      </h2>
+    </div>
+  </section>
+
+
+
+
+
+<!-- 
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Related Links</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              <a href="https://embodied-gaussians.github.io/"">Embodied Gaussians </a> is the underlying simulator that powers real-is-sim.
+            </p>
+          </div>
+        </div>
+      </div>
+  </section> -->
+
+  <footer class="footer">
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Template based on <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> website.
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
